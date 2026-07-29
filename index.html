@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعزوتي 🤍</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma,sans-serif;
+}
+
+body{
+background:linear-gradient(#050816,#0d1b3d);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+color:white;
+}
+
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(white 1px, transparent 1px);
+background-size:45px 45px;
+animation:starsMove 80s linear infinite;
+opacity:.6;
+}
+
+@keyframes starsMove{
+from{transform:translateY(0);}
+to{transform:translateY(-500px);}
+}
+
+.card{
+position:relative;
+z-index:5;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:35px;
+width:340px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 0 30px rgba(255,255,255,.15);
+}
+
+h1{
+margin-bottom:15px;
+font-size:30px;
+}
+
+p{
+line-height:1.9;
+margin-top:10px;
+}
+
+button{
+margin-top:30px;
+padding:14px 40px;
+border:none;
+border-radius:40px;
+background:#ff5d9e;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="card">
+
+<h1>🤍 لعزوتي</h1>
+
+<p>
+
+إذا وصلت لهون...
+
+فهذا يعني إن الشخص الصح هو اللي فتح الموقع.
+
+<br><br>
+
+عندي إلك رحلة صغيرة...
+وفي نهايتها شيء من قلبي.
+
+</p>
+
+<button onclick="location.href='password.html'">
+
+ابدأ ❤️
+
+</button>
+
+</div>
+
+</body>
+</html>
