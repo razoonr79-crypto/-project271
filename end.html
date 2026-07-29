@@ -17,28 +17,29 @@ display:flex;
 justify-content:center;
 align-items:center;
 background:linear-gradient(#050816,#0d1b3d);
-overflow:hidden;
 font-family:Tahoma,sans-serif;
 color:white;
 padding:20px;
+overflow-x:hidden;
 }
 
 .box{
-text-align:center;
-z-index:2;
 width:100%;
 max-width:390px;
+text-align:center;
+position:relative;
+z-index:2;
 }
 
 h1{
-font-size:32px;
-margin-bottom:25px;
+font-size:30px;
+margin:0 0 30px;
 animation:pulse 2s infinite;
 }
 
 .envelope-wrap{
 position:relative;
-width:300px;
+width:280px;
 height:210px;
 margin:0 auto;
 cursor:pointer;
@@ -46,76 +47,99 @@ cursor:pointer;
 
 .envelope{
 position:absolute;
+left:0;
 bottom:0;
 width:100%;
 height:170px;
 background:#f4b6c8;
 border-radius:0 0 18px 18px;
-overflow:hidden;
 box-shadow:0 15px 35px rgba(0,0,0,.35);
+overflow:hidden;
+z-index:3;
 }
 
-.envelope:before{
-content:"";
+.flap{
 position:absolute;
 top:0;
 left:0;
 width:0;
 height:0;
-border-left:150px solid transparent;
-border-right:150px solid transparent;
+border-left:140px solid transparent;
+border-right:140px solid transparent;
 border-top:95px solid #e995ae;
-z-index:3;
 transform-origin:top;
-transition:transform 1s ease;
+transition:transform .9s ease;
+z-index:6;
 }
 
-.envelope:after{
-content:"";
+.front-left{
 position:absolute;
-bottom:0;
 left:0;
+bottom:0;
 width:0;
 height:0;
-border-left:150px solid #eda8bd;
-border-right:150px solid #eda8bd;
-border-top:90px solid transparent;
-z-index:2;
+border-top:85px solid transparent;
+border-bottom:85px solid #eda8bd;
+border-right:140px solid transparent;
+z-index:5;
+}
+
+.front-right{
+position:absolute;
+right:0;
+bottom:0;
+width:0;
+height:0;
+border-top:85px solid transparent;
+border-bottom:85px solid #eda8bd;
+border-left:140px solid transparent;
+z-index:5;
 }
 
 .letter{
 position:absolute;
-left:15px;
+left:12px;
 bottom:15px;
-width:270px;
-height:150px;
+width:256px;
+height:135px;
 background:white;
 color:#5b2235;
 border-radius:14px;
 padding:18px;
-z-index:1;
-transition:transform 1s ease, height 1s ease;
-overflow:auto;
+overflow:hidden;
+opacity:0;
+z-index:2;
+transition:
+transform 1s ease,
+height 1s ease,
+opacity .4s ease;
 font-size:15px;
 line-height:1.9;
 text-align:right;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
-.envelope-wrap.open .envelope:before{
+.envelope-wrap.open{
+height:540px;
+}
+
+.envelope-wrap.open .flap{
 transform:rotateX(180deg);
-z-index:0;
+z-index:1;
 }
 
 .envelope-wrap.open .letter{
-transform:translateY(-175px);
-height:360px;
-z-index:5;
+transform:translateY(-285px);
+height:430px;
+opacity:1;
+overflow-y:auto;
+z-index:8;
 }
 
 .tap{
 margin-top:25px;
-font-size:18px;
-opacity:.9;
+font-size:17px;
+transition:opacity .4s ease;
 }
 
 .final{
@@ -134,16 +158,18 @@ opacity:1;
 }
 
 .heart{
-position:absolute;
-top:-30px;
-font-size:25px;
+position:fixed;
+top:-40px;
+font-size:24px;
 animation:fall linear infinite;
-opacity:.8;
+opacity:.75;
+pointer-events:none;
+z-index:1;
 }
 
 @keyframes fall{
 0%{
-transform:translateY(-50px) rotate(0deg);
+transform:translateY(-60px) rotate(0deg);
 }
 100%{
 transform:translateY(110vh) rotate(360deg);
@@ -155,8 +181,36 @@ transform:translateY(110vh) rotate(360deg);
 transform:scale(1);
 }
 50%{
-transform:scale(1.06);
+transform:scale(1.05);
 }
+}
+
+@media(max-width:360px){
+
+h1{
+font-size:26px;
+}
+
+.envelope-wrap{
+width:250px;
+}
+
+.envelope{
+height:155px;
+}
+
+.flap{
+border-left-width:125px;
+border-right-width:125px;
+border-top-width:85px;
+}
+
+.letter{
+left:10px;
+width:230px;
+font-size:14px;
+}
+
 }
 </style>
 </head>
@@ -169,8 +223,6 @@ transform:scale(1.06);
 
 <div class="envelope-wrap" id="envelope">
 
-<div class="envelope"></div>
-
 <div class="letter">
 
 <b>يا عزوتي...</b>
@@ -179,7 +231,7 @@ transform:scale(1.06);
 
 تدري شنو أكثر شيء أحبه بالدنيا؟
 
-<br>
+<br><br>
 
 مو القهوة...
 <br>
@@ -195,7 +247,7 @@ transform:scale(1.06);
 
 أحب تفاصيلك الصغيرة قبل الكبيرة،
 أحب صوتك، سوالفك، غيرتك، ضحكتك،
-وحتى أيام نتهاوش فيها...
+وحتى أيام نتهاوش فيها،
 لأن بالنهاية ما أرتاح إلا وإحنا بخير.
 
 <br><br>
@@ -212,7 +264,8 @@ transform:scale(1.06);
 
 <br><br>
 
-<b>إنت بيتي، وأماني، وسندي، وراحة قلبي، وأجمل صدفة صارت بحياتي.</b>
+<b>إنت بيتي، وأماني، وسندي، وراحة قلبي،
+وأجمل صدفة صارت بحياتي.</b>
 
 <br><br>
 
@@ -220,7 +273,8 @@ transform:scale(1.06);
 
 <br><br>
 
-<b>أبي أشوفك بكل مرحلة من عمري، وكل حلم أحققه يكون وإنت معي.</b>
+<b>أبي أشوفك بكل مرحلة من عمري،
+وكل حلم أحققه يكون وإنت معي.</b>
 
 <br><br>
 
@@ -234,7 +288,7 @@ transform:scale(1.06);
 <br><br>
 
 وإذا وصلت لهون بالموقع،
-فهذا لأنك تستاهل كل دقيقة قضيتها وأنا أسوي هالمفاجأة...
+فهذا لأنك تستاهل كل دقيقة قضيتها وأنا أسوي هالمفاجأة.
 
 <br><br>
 
@@ -244,6 +298,12 @@ transform:scale(1.06);
 
 <b>27/1 ♾️ إلى ما لا نهاية</b>
 
+</div>
+
+<div class="envelope">
+<div class="flap"></div>
+<div class="front-left"></div>
+<div class="front-right"></div>
 </div>
 
 </div>
@@ -256,25 +316,22 @@ transform:scale(1.06);
 
 <script>
 
-document.getElementById("envelope").addEventListener("click",function(){
-this.classList.add("open");
+const envelope = document.getElementById("envelope");
+
+envelope.addEventListener("click",function(){
+this.classList.toggle("open");
 });
 
-for(let i=0;i<35;i++){
+for(let i=0;i<25;i++){
 
-let h=document.createElement("div");
+const h=document.createElement("div");
 
 h.className="heart";
-
 h.innerHTML=Math.random()>.5 ? "❤️" : "🤍";
-
 h.style.left=Math.random()*100+"%";
-
-h.style.animationDuration=(4+Math.random()*5)+"s";
-
+h.style.animationDuration=(5+Math.random()*5)+"s";
 h.style.animationDelay=(Math.random()*5)+"s";
-
-h.style.fontSize=(18+Math.random()*18)+"px";
+h.style.fontSize=(16+Math.random()*16)+"px";
 
 document.body.appendChild(h);
 
