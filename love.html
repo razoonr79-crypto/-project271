@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعزوتي ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:#07111f;
+font-family:Tahoma;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+color:white;
+}
+
+.box{
+width:340px;
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+text-align:center;
+}
+
+#days{
+font-size:45px;
+color:#ff79b0;
+margin:20px 0;
+font-weight:bold;
+}
+
+#message{
+line-height:2;
+min-height:180px;
+}
+
+button{
+
+padding:12px 35px;
+border:none;
+border-radius:30px;
+background:#ff5d9e;
+color:white;
+font-size:18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🤍 يا عزوتي</h2>
+
+<div id="days"></div>
+
+<div id="message"></div>
+
+<button onclick="finish()">
+
+المفاجأة 🎁
+
+</button>
+
+</div>
+
+<script>
+
+let start=new Date("2025-01-27");
+
+let now=new Date();
+
+let diff=Math.floor((now-start)/(1000*60*60*24));
+
+document.getElementById("days").innerHTML=diff+" يوم";
+
+let text=`
+
+من يوم 27/1
+
+وأنا ممتنة لكل لحظة جمعتنا.
+
+يمكن مرات نختلف...
+
+ويمكن نزعل...
+
+لكن بالنهاية...
+
+أنت الشخص اللي أختاره كل يوم.
+
+وأتمنى تظل معي دائماً ❤️
+
+`;
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("message").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,40);
+
+}
+
+}
+
+type();
+
+function finish(){
+
+window.location.href="end.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
