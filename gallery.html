@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ذكرياتنا 🤍</title>
+
+<style>
+
+body{
+margin:0;
+background:#081425;
+font-family:Tahoma;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.box{
+width:340px;
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(12px);
+}
+
+img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:15px;
+background:#ddd;
+}
+
+h2{
+margin-top:20px;
+}
+
+button{
+
+margin-top:20px;
+padding:12px 35px;
+border:none;
+border-radius:30px;
+background:#ff5d9e;
+color:white;
+font-size:18px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<img id="photo" src="https://placehold.co/400x500/png?text=صورتنا+١">
+
+<h2 id="text">
+
+هنا بدأت أجمل قصة 🤍
+
+</h2>
+
+<button onclick="next()">
+
+التالي ❤️
+
+</button>
+
+</div>
+
+<script>
+
+let photos=[
+
+["https://placehold.co/400x500/png?text=صورتنا+١","هنا بدأت أجمل قصة 🤍"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٢","كل مرة أشوفها أبتسم ❤️"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٣","أجمل ذكرى عندي 🌸"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٤","وجودك لحاله يكفيني 🤍"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٥","أحب تفاصيلنا الصغيرة ✨"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٦","ولو رجع الزمن باختارك من جديد ❤️"],
+
+["https://placehold.co/400x500/png?text=صورتنا+٧","وهذي مو النهاية... 🤍"]
+
+];
+
+let i=0;
+
+function next(){
+
+i++;
+
+if(i<photos.length){
+
+document.getElementById("photo").src=photos[i][0];
+
+document.getElementById("text").innerHTML=photos[i][1];
+
+}else{
+
+window.location.href="love.html";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
