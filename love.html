@@ -6,127 +6,179 @@
 <title>لعزوتي ❤️</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
 
 body{
-margin:0;
-background:#07111f;
-font-family:Tahoma;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-overflow:hidden;
-color:white;
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(#07111f,#111b3a);
+  font-family:Tahoma,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  padding:20px;
 }
 
 .box{
-width:340px;
-padding:30px;
-border-radius:20px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-text-align:center;
+  width:100%;
+  max-width:380px;
+  padding:28px 22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  text-align:center;
 }
 
-#days{
-font-size:45px;
-color:#ff79b0;
-margin:20px 0;
-font-weight:bold;
+.counter{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:22px 0;
+}
+
+.time-box{
+  background:rgba(255,255,255,.09);
+  border-radius:15px;
+  padding:12px 5px;
+}
+
+.number{
+  display:block;
+  font-size:25px;
+  color:#ff79b0;
+  font-weight:bold;
+}
+
+.label{
+  display:block;
+  margin-top:5px;
+  font-size:13px;
 }
 
 #message{
-line-height:2;
-min-height:180px;
+  line-height:2;
+  min-height:220px;
+  white-space:pre-line;
 }
 
 button{
-
-padding:12px 35px;
-border:none;
-border-radius:30px;
-background:#ff5d9e;
-color:white;
-font-size:18px;
-
+  padding:13px 35px;
+  border:none;
+  border-radius:30px;
+  background:#ff5d9e;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div class="box">
+  <h2>🤍 من يوم 27/1/2025</h2>
+  <p>وإحنا نكتب قصتنا سوا</p>
 
-<h2>🤍 يا عزوتي</h2>
+  <div class="counter">
+    <div class="time-box">
+      <span class="number" id="years">0</span>
+      <span class="label">سنة</span>
+    </div>
 
-<div id="days"></div>
+    <div class="time-box">
+      <span class="number" id="months">0</span>
+      <span class="label">شهر</span>
+    </div>
 
-<div id="message"></div>
+    <div class="time-box">
+      <span class="number" id="days">0</span>
+      <span class="label">يوم</span>
+    </div>
 
-<button onclick="finish()">
+    <div class="time-box">
+      <span class="number" id="hours">0</span>
+      <span class="label">ساعة</span>
+    </div>
 
-المفاجأة 🎁
+    <div class="time-box">
+      <span class="number" id="minutes">0</span>
+      <span class="label">دقيقة</span>
+    </div>
 
-</button>
+    <div class="time-box">
+      <span class="number" id="seconds">0</span>
+      <span class="label">ثانية</span>
+    </div>
+  </div>
 
+  <div id="message"></div>
+
+  <button onclick="location.href='end.html'">
+    المفاجأة 🎁
+  </button>
 </div>
 
 <script>
+const startDate = new Date(2025, 0, 27, 0, 0, 0);
 
-let start=new Date("2025-01-27");
+function updateCounter(){
+  const now = new Date();
 
-let now=new Date();
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
 
-let diff=Math.floor((now-start)/(1000*60*60*24));
+  if(days < 0){
+    months--;
+    const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += previousMonth.getDate();
+  }
 
-document.getElementById("days").innerHTML=diff+" يوم";
+  if(months < 0){
+    years--;
+    months += 12;
+  }
 
-let text=`
-
-من يوم 27/1
-
-وأنا ممتنة لكل لحظة جمعتنا.
-
-يمكن مرات نختلف...
-
-ويمكن نزعل...
-
-لكن بالنهاية...
-
-أنت الشخص اللي أختاره كل يوم.
-
-وأتمنى تظل معي دائماً ❤️
-
-`;
-
-let i=0;
-
-function type(){
-
-if(i<text.length){
-
-document.getElementById("message").innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(type,40);
-
+  document.getElementById("years").textContent = years;
+  document.getElementById("months").textContent = months;
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent =
+    String(now.getHours()).padStart(2,"0");
+  document.getElementById("minutes").textContent =
+    String(now.getMinutes()).padStart(2,"0");
+  document.getElementById("seconds").textContent =
+    String(now.getSeconds()).padStart(2,"0");
 }
 
+updateCounter();
+setInterval(updateCounter,1000);
+
+const text = `يا عزوتي...
+
+من يوم 27/1 وإنت مو بس شخص بحياتي،
+إنت الأمان والسند والوجه اللي أحب أشوفه بكل أيامي.
+
+يمكن نختلف ونزعل مرات،
+لكن قلبي بكل مرة يرجع يختارك.
+
+وجودك معي من أجمل الأشياء اللي صارتلي،
+وأتمنى تظل قصتنا مستمرة للأبد ❤️`;
+
+let i = 0;
+
+function typeMessage(){
+  if(i < text.length){
+    document.getElementById("message").textContent += text.charAt(i);
+    i++;
+    setTimeout(typeMessage,35);
+  }
 }
 
-type();
-
-function finish(){
-
-window.location.href="end.html";
-
-}
-
+typeMessage();
 </script>
 
 </body>
-
 </html>
