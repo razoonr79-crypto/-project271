@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أحبك 🤍</title>
+<title>رسالة لعزوتي 💌</title>
 
 <style>
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -16,23 +20,117 @@ background:linear-gradient(#050816,#0d1b3d);
 overflow:hidden;
 font-family:Tahoma,sans-serif;
 color:white;
+padding:20px;
 }
 
 .box{
 text-align:center;
-padding:30px;
 z-index:2;
+width:100%;
+max-width:390px;
 }
 
 h1{
-font-size:45px;
-margin-bottom:20px;
+font-size:32px;
+margin-bottom:25px;
 animation:pulse 2s infinite;
 }
 
-p{
-font-size:22px;
-line-height:2;
+.envelope-wrap{
+position:relative;
+width:300px;
+height:210px;
+margin:0 auto;
+cursor:pointer;
+}
+
+.envelope{
+position:absolute;
+bottom:0;
+width:100%;
+height:170px;
+background:#f4b6c8;
+border-radius:0 0 18px 18px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:150px solid transparent;
+border-right:150px solid transparent;
+border-top:95px solid #e995ae;
+z-index:3;
+transform-origin:top;
+transition:transform 1s ease;
+}
+
+.envelope:after{
+content:"";
+position:absolute;
+bottom:0;
+left:0;
+width:0;
+height:0;
+border-left:150px solid #eda8bd;
+border-right:150px solid #eda8bd;
+border-top:90px solid transparent;
+z-index:2;
+}
+
+.letter{
+position:absolute;
+left:15px;
+bottom:15px;
+width:270px;
+height:150px;
+background:white;
+color:#5b2235;
+border-radius:14px;
+padding:18px;
+z-index:1;
+transition:transform 1s ease, height 1s ease;
+overflow:auto;
+font-size:15px;
+line-height:1.9;
+text-align:right;
+}
+
+.envelope-wrap.open .envelope:before{
+transform:rotateX(180deg);
+z-index:0;
+}
+
+.envelope-wrap.open .letter{
+transform:translateY(-175px);
+height:360px;
+z-index:5;
+}
+
+.tap{
+margin-top:25px;
+font-size:18px;
+opacity:.9;
+}
+
+.final{
+margin-top:18px;
+font-size:18px;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.envelope-wrap.open + .tap{
+opacity:0;
+}
+
+.envelope-wrap.open ~ .final{
+opacity:1;
 }
 
 .heart{
@@ -45,10 +143,10 @@ opacity:.8;
 
 @keyframes fall{
 0%{
-transform:translateY(-50px);
+transform:translateY(-50px) rotate(0deg);
 }
 100%{
-transform:translateY(110vh);
+transform:translateY(110vh) rotate(360deg);
 }
 }
 
@@ -57,7 +155,7 @@ transform:translateY(110vh);
 transform:scale(1);
 }
 50%{
-transform:scale(1.08);
+transform:scale(1.06);
 }
 }
 </style>
@@ -67,43 +165,116 @@ transform:scale(1.08);
 
 <div class="box">
 
-<h1>❤️ أحبك يا عزوتي ❤️</h1>
+<h1>💌 رسالة أخيرة لعزوتي</h1>
 
-<p>
+<div class="envelope-wrap" id="envelope">
 
-شكراً لأنك دخلت هالرحلة.
+<div class="envelope"></div>
 
-يمكن هي مجرد صفحات...
+<div class="letter">
 
-لكن كل كلمة فيها طالعة من قلبي.
+<b>يا عزوتي...</b>
 
 <br><br>
 
-وأتمنى مهما صار...
+تدري شنو أكثر شيء أحبه بالدنيا؟
 
-نضل نختار بعض كل يوم.
+<br>
 
-🤍
+مو القهوة...
+<br>
+مو السفر...
+<br>
+مو الطلعات...
 
-</p>
+<br><br>
+
+<b>إنت.</b>
+
+<br><br>
+
+أحب تفاصيلك الصغيرة قبل الكبيرة،
+أحب صوتك، سوالفك، غيرتك، ضحكتك،
+وحتى أيام نتهاوش فيها...
+لأن بالنهاية ما أرتاح إلا وإحنا بخير.
+
+<br><br>
+
+ولو رجع فيني الزمن ألف مرة...
+
+<br><br>
+
+<b>بكل مرة باختارك إنت.</b>
+
+<br><br>
+
+لأنك مو بس حبيبي...
+
+<br><br>
+
+<b>إنت بيتي، وأماني، وسندي، وراحة قلبي، وأجمل صدفة صارت بحياتي.</b>
+
+<br><br>
+
+وإذا كان عندي أمنية وحدة بس...
+
+<br><br>
+
+<b>أبي أشوفك بكل مرحلة من عمري، وكل حلم أحققه يكون وإنت معي.</b>
+
+<br><br>
+
+أحبك حب ما ينوصف...
+
+<br><br>
+
+وأحب فكرة إن آخر شخص أقول له تصبح على خير يكون إنت،
+وأول شخص أفكر فيه إذا صحيت يكون برضو إنت.
+
+<br><br>
+
+وإذا وصلت لهون بالموقع،
+فهذا لأنك تستاهل كل دقيقة قضيتها وأنا أسوي هالمفاجأة...
+
+<br><br>
+
+<b>لأنك تستاهل أكثر من كذا بكثير يا مدللي ❤️</b>
+
+<br><br>
+
+<b>27/1 ♾️ إلى ما لا نهاية</b>
+
+</div>
+
+</div>
+
+<div class="tap">اضغط على الظرف عشان تفتحه 🤍</div>
+
+<div class="final">أحبك يا عزوتي ❤️</div>
 
 </div>
 
 <script>
 
-for(let i=0;i<40;i++){
+document.getElementById("envelope").addEventListener("click",function(){
+this.classList.add("open");
+});
+
+for(let i=0;i<35;i++){
 
 let h=document.createElement("div");
 
 h.className="heart";
 
-h.innerHTML="❤️";
+h.innerHTML=Math.random()>.5 ? "❤️" : "🤍";
 
 h.style.left=Math.random()*100+"%";
 
-h.style.animationDuration=(4+Math.random()*4)+"s";
+h.style.animationDuration=(4+Math.random()*5)+"s";
 
-h.style.fontSize=(20+Math.random()*20)+"px";
+h.style.animationDelay=(Math.random()*5)+"s";
+
+h.style.fontSize=(18+Math.random()*18)+"px";
 
 document.body.appendChild(h);
 
