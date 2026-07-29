@@ -16,12 +16,15 @@ font-family:Tahoma;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
 color:white;
+padding:20px;
+box-sizing:border-box;
 }
 
 .box{
 width:340px;
+max-width:100%;
 background:rgba(255,255,255,.08);
 padding:25px;
 border-radius:20px;
@@ -39,10 +42,10 @@ background:#ddd;
 
 h2{
 margin-top:20px;
+line-height:1.8;
 }
 
 button{
-
 margin-top:20px;
 padding:12px 35px;
 border:none;
@@ -50,7 +53,7 @@ border-radius:30px;
 background:#ff5d9e;
 color:white;
 font-size:18px;
-
+cursor:pointer;
 }
 
 </style>
@@ -61,57 +64,53 @@ font-size:18px;
 
 <div class="box">
 
-<img id="photo" src="https://placehold.co/400x500/png?text=صورتنا+١">
+<img id="photo" src="IMG_1923.png" alt="صورة من ذكرياتنا">
 
 <h2 id="text">
-
 هنا بدأت أجمل قصة 🤍
-
 </h2>
 
 <button onclick="next()">
-
 التالي ❤️
-
 </button>
 
 </div>
 
 <script>
 
-let photos=[
+let photos = [
 
-["https://placehold.co/400x500/png?text=صورتنا+١","هنا بدأت أجمل قصة 🤍"],
+["IMG_1923.png","هنا بدأت أجمل قصة 🤍"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٢","كل مرة أشوفها أبتسم ❤️"],
+["IMG_1925.png","كل مرة أشوفها أبتسم ❤️"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٣","أجمل ذكرى عندي 🌸"],
+["IMG_1926.jpeg","أجمل ذكرى عندي 🌸"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٤","وجودك لحاله يكفيني 🤍"],
+["IMG_1927.png","وجودك لحاله يكفيني 🤍"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٥","أحب تفاصيلنا الصغيرة ✨"],
+["IMG_1928.png","أحب تفاصيلنا الصغيرة ✨"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٦","ولو رجع الزمن باختارك من جديد ❤️"],
+["IMG_1930.png","ولو رجع الزمن باختارك من جديد ❤️"],
 
-["https://placehold.co/400x500/png?text=صورتنا+٧","وهذي مو النهاية... 🤍"]
+["IMG_1929.jpeg","وهذي مو النهاية... هذي بداية عمرنا 🤍"]
 
 ];
 
-let i=0;
+let i = 0;
 
 function next(){
 
 i++;
 
-if(i<photos.length){
+if(i < photos.length){
 
-document.getElementById("photo").src=photos[i][0];
+document.getElementById("photo").src = photos[i][0];
 
-document.getElementById("text").innerHTML=photos[i][1];
+document.getElementById("text").innerHTML = photos[i][1];
 
 }else{
 
-window.location.href="love.html";
+window.location.href = "love.html";
 
 }
 
